@@ -34,7 +34,7 @@ def get_immediate_images(directory_path, extension='png'):
     return imgs
 
 
-def get_label_from_name(name):
+def get_label_sequence_from_name(name):
     """
     Gets a label for the images from the name of the directory
     Example name: "20160805_g1k17-08-05-2016_16-25-43_idx99_BLO"
@@ -45,7 +45,9 @@ def get_label_from_name(name):
     ```
     """
     removed_extension = name.split(".")[0]
-    return removed_extension[-3:]
+    label = removed_extension[-3:]
+    sequence = removed_extension[:-4]  # drops the _BLO
+    return label, sequence
 
 def get_split(test=0.15, val=0.15):
     """
