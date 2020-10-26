@@ -2,6 +2,7 @@ import os
 import shutil
 import numpy as np
 import imghdr  # for checking images are valid
+from shutil import rmtree
 
 def get_immediate_directories(directory_path):
     """
@@ -28,7 +29,7 @@ def get_immediate_images(directory_path, extension='png'):
     """
 
     # Only get valid images
-    imgs = [i for i in os.listdir(directory_path) if image_is_valid(os.path.join(directory_path, i), extension=extension)]
+    imgs = [i for i in os.listdir(directory_path) if image_giis_valid(os.path.join(directory_path, i), extension=extension)]
 
     return imgs
 
@@ -70,3 +71,13 @@ def image_is_valid(path_to_image, extension='png'):
     Returns True if the image is valid. False otherwise
     """
     return imghdr.what(path_to_image) == extension
+
+def rm_mkdir(directory_name):
+    """
+    Helper function to remove the contents of a directory and re-create an empty one
+    """
+
+    if os.path.exists(directory_name):
+        # Remove the existing folder to get rid of old contents
+        rmtree(directory_name)
+    os.mkdir(directory_name)
