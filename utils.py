@@ -29,7 +29,7 @@ def get_immediate_images(directory_path, extension='png'):
     """
 
     # Only get valid images
-    imgs = [i for i in os.listdir(directory_path) if image_giis_valid(os.path.join(directory_path, i), extension=extension)]
+    imgs = [i for i in os.listdir(directory_path) if image_is_valid(os.path.join(directory_path, i), extension=extension)]
 
     return imgs
 
