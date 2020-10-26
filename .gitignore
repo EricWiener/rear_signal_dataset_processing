@@ -162,3 +162,4 @@ Thumb.db
 data/
 output/
 sequence_output/
+lstm_output/
