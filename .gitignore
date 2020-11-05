@@ -163,3 +163,4 @@ data/
 output/
 sequence_output/
 lstm_output/
+slowfast_output/
