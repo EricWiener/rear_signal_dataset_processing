@@ -5,6 +5,7 @@ import imghdr  # for checking images are valid
 from shutil import rmtree
 import random
 from collections import defaultdict
+from natsort import natsorted
 
 def get_immediate_directories(directory_path):
     """
@@ -156,3 +157,12 @@ def get_paths_for_image_sequences(difficulties):
                 per_class_image_sequences[class_label][footage_sequence_dir]["image_paths"] = image_names
 
     return per_class_image_sequences
+
+def labels_to_ints(labels, csv_output):
+    """
+    Receives a list of string labels, sorts them, and returns a dictionary
+    mapping the labels to an int id.
+    """
+    # Sort naturally
+    labels = natsorted(labels)
+    return {label: idx for idx, label in enumerate(labels)}
