@@ -158,7 +158,7 @@ def get_paths_for_image_sequences(difficulties):
 
     return per_class_image_sequences
 
-def labels_to_ints(labels, csv_output):
+def labels_to_ints(labels):
     """
     Receives a list of string labels, sorts them, and returns a dictionary
     mapping the labels to an int id.
