@@ -1,5 +1,43 @@
 This repository contains scripts to help process the [Vehicle Rear Signal Dataset](http://vllab1.ucmerced.edu/~hhsu22/rear_signal/rear_signal#) provided by UC Merced.
 
+# Notebooks
+### process_rear_signal_dataset.ipynb
+This notebook will extract a single frame from every sequence to use for training. This is useful for creating datasets for one-shot models.
+
+Output Dataset folder structure:
+One image from every sequence is moved into a directory corresponding to that sequence's label
+```
+|_ BLO
+|  |_ frame_000001.png
+|  |_ frame_000002.png
+|  |_ ...
+|_ BLR
+|  |_ frame_000001.png
+|  |_ frame_000002.png
+|  |_ ...
+|_ ...
+```
+
+### process_rear_signal_dataset_sequences.ipynb
+This notebook is used to organize the data in such a way that it can be used for training models that handle sequences of data (LSTM, SlowFast, ResNet3D, etc).
+
+Output Dataset folder structure:
+```
+|_ frames
+|  |_ [video name 0]
+|  |  |_ frame_000001.jpg
+|  |  |_ frame_000002.jpg
+|  |  |_ ...
+|  |_ [video name 1]
+|     |_ frame_000001.jpg
+|     |_ frame_000002.jpg
+|     |_ ...
+|_ train.csv
+|_ test.csv
+|_ val.csv
+|_ label_to_id.pickle (maps from label string -> class id #)
+```
+
 # Dataset Description
 ----------------------------------------------------------------------------------------------------------------
 This dataset contains time-sequence images of different vehicle rears under various real-world road conditions.
